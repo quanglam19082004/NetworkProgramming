@@ -43,14 +43,14 @@ df['UDP_Packets_Lost'] = np.maximum(df['UDP_Packets_Sent'] - df['UDP_Packets_Rec
 fig, axes = plt.subplots(3, 3, figsize=(20, 16)) 
 axes = axes.flatten()
 
-# 1️⃣ Throughput
+# Throughput
 axes[0].plot(df['Time'], df['TCP_Throughput_Mbps'], 'b-', label='TCP')
 axes[0].plot(df['Time'], df['UDP_Throughput_Mbps'], 'r-', label='UDP')
 axes[0].set_title('Throughput Comparison', fontsize=12) # Giảm font title
 axes[0].set_xlabel('Time (s)'); axes[0].set_ylabel('Mbps')
 axes[0].legend(); axes[0].grid(True, alpha=0.3)
 
-# 2️⃣ PDR
+# PDR
 axes[1].plot(df['Time'], df['TCP_PDR_%'], 'b-', label='TCP')
 axes[1].plot(df['Time'], df['UDP_PDR_%'], 'r-', label='UDP')
 axes[1].set_title('Packet Delivery Ratio', fontsize=12) # Giảm font title
@@ -58,35 +58,35 @@ axes[1].set_xlabel('Time (s)'); axes[1].set_ylabel('PDR (%)')
 axes[1].legend(); axes[1].grid(True, alpha=0.3)
 axes[1].set_ylim([0, 105])
 
-# 3️⃣ Cumulative Packets Received
+# Cumulative Packets Received
 axes[2].plot(df['Time'], df['TCP_Packets_Received'], 'b-', label='TCP')
 axes[2].plot(df['Time'], df['UDP_Packets_Received'], 'r-', label='UDP')
 axes[2].set_title('Cumulative Packets Received', fontsize=12) # Giảm font title
 axes[2].set_xlabel('Time (s)'); axes[2].set_ylabel('Packets')
 axes[2].legend(); axes[2].grid(True, alpha=0.3)
 
-# 4️⃣ Cumulative Bytes Received
+# Cumulative Bytes Received
 axes[3].plot(df['Time'], df['TCP_Bytes_Received']/1024, 'b-', label='TCP')
 axes[3].plot(df['Time'], df['UDP_Bytes_Received']/1024, 'r-', label='UDP')
 axes[3].set_title('Cumulative Data Received', fontsize=12) # Giảm font title
 axes[3].set_xlabel('Time (s)'); axes[3].set_ylabel('KB')
 axes[3].legend(); axes[3].grid(True, alpha=0.3)
 
-# 5️⃣ Packet Loss
+# Packet Loss
 axes[4].plot(df['Time'], df['TCP_Packets_Lost'], 'b-', label='TCP')
 axes[4].plot(df['Time'], df['UDP_Packets_Lost'], 'r-', label='UDP')
 axes[4].set_title('Packet Loss Over Time', fontsize=12) # Giảm font title
 axes[4].set_xlabel('Time (s)'); axes[4].set_ylabel('Packets Lost')
 axes[4].legend(); axes[4].grid(True, alpha=0.3)
 
-# 6️⃣ Packets Sent
+# Packets Sent
 axes[5].plot(df['Time'], df['TCP_Packets_Sent'], 'b-', label='TCP')
 axes[5].plot(df['Time'], df['UDP_Packets_Sent'], 'r-', label='UDP')
 axes[5].set_title('Cumulative Packets Sent', fontsize=12) # Giảm font title
 axes[5].set_xlabel('Time (s)'); axes[5].set_ylabel('Packets Sent')
 axes[5].legend(); axes[5].grid(True, alpha=0.3)
 
-# 7️⃣ Bar Chart - Final Metrics
+# Bar Chart - Final Metrics
 metrics = ['Throughput (Mbps)', 'PDR (%)', 'Packets Received (x10k)'] 
 tcp_vals = [df['TCP_Throughput_Mbps'].iloc[-1], df['TCP_PDR_%'].iloc[-1], df['TCP_Packets_Received'].iloc[-1]/10000]
 udp_vals = [df['UDP_Throughput_Mbps'].iloc[-1], df['UDP_PDR_%'].iloc[-1], df['UDP_Packets_Received'].iloc[-1]/10000]
@@ -97,7 +97,7 @@ axes[6].set_title('Final Metrics Comparison', fontsize=12); axes[6].set_xticks(x
 axes[6].set_xticklabels(metrics, rotation=0, fontsize=8) # Giảm font xticklabels
 axes[6].legend(); axes[6].grid(True, alpha=0.3, axis='y')
 
-# 8️⃣ Protocol Efficiency
+# Protocol Efficiency
 tcp_eff = (df['TCP_Packets_Received']/df['TCP_Packets_Sent']*100).fillna(0)
 udp_eff = (df['UDP_Packets_Received']/df['UDP_Packets_Sent']*100).fillna(0)
 axes[7].fill_between(df['Time'], tcp_eff, alpha=0.3, color='blue', label='TCP')
@@ -108,7 +108,7 @@ axes[7].set_title('Protocol Efficiency Over Time', fontsize=12) # Giảm font ti
 axes[7].set_xlabel('Time (s)'); axes[7].set_ylabel('Efficiency (%)')
 axes[7].legend(); axes[7].grid(True, alpha=0.3); axes[7].set_ylim([0,105])
 
-# 9️⃣ Statistics Table
+# Statistics Table
 axes[8].axis('off')
 stats_data = [
 ['Metric','TCP','UDP'],
