@@ -4,4 +4,4 @@
 Sinh viên thực hiện: Trần Quang Khánh - 106220220 |
                      Lê Xuân Nam      - 106220226 |
                      Đặng Quang Lâm   - 106220256 |
-Giáo viên hướng dẫn: TS. Nguyễn Văn Hiếu
+Giảng viên hướng dẫn: TS. Nguyễn Văn Hiếu
